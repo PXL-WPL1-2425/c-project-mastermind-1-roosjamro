@@ -25,9 +25,16 @@ namespace Mastermind
             InitializeComponent();
         }
 
-        private void validateCode_Click(object sender, RoutedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        
+        }
+
+        private void CheckCode_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+
     }
 }
