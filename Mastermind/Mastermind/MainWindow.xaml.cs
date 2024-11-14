@@ -69,5 +69,16 @@ namespace Mastermind
                 comboBoxes[i].ItemsSource = availableColors;
             }
         }
+
+        private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            if (comboBox != null && comboBox.SelectedItem != null)
+            {
+                int index = int.Parse(comboBox.Name.Substring(comboBox.Name.Length - 1)) - 1;
+                Label label = (Label)FindName($"Label{index + 1}");
+                label.Background = (SolidColorBrush)new BrushConverter().ConvertFromString(comboBox.SelectedItem.ToString());
+            }
+        }
     }
 }
