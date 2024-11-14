@@ -28,7 +28,8 @@ namespace Mastermind
         public MainWindow()
         {
             InitializeComponent();
-            secretCode = GenerateRandomCode(); 
+            secretCode = GenerateRandomCode();
+            PopulateComboBoxes();
 
         }
 
@@ -58,6 +59,15 @@ namespace Mastermind
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Title = $"Mastermind Game - code: {string.Join(", ", secretCode)}";
+        }
+
+        private void PopulateComboBoxes()
+        {
+            ComboBox[] comboBoxes = { ComboBox1, ComboBox2, ComboBox3, ComboBox4 };
+            for (int i = 0; i < comboBoxes.Length; i++)
+            {
+                comboBoxes[i].ItemsSource = availableColors;
+            }
         }
     }
 }
