@@ -20,9 +20,16 @@ namespace Mastermind
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private List<string> availableColors = new List<string> { "Red", "Yellow", "Orange", "White", "Green", "Blue" };
+        private List<string> secretCode = new List<string>();
+        private int score;
+
         public MainWindow()
         {
             InitializeComponent();
+            secretCode = GenerateRandomCode(); 
+
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -35,6 +42,22 @@ namespace Mastermind
 
         }
 
+        private List<string> GenerateRandomCode()
+        {
+            Random random = new Random();
+            List<string> code = new List<string>();
+            for (int i = 0; i < 4; i++)
+            {
+                string color = availableColors[random.Next(availableColors.Count)];
+                code.Add(color);
+            }
+            return code;
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Title = $"Mastermind Game - code: {string.Join(", ", secretCode)}";
+        }
     }
 }
